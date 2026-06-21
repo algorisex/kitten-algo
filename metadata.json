@@ -1,9 +1,10 @@
 {
-    "name": "Algorisex",
-    "description": "Meme coin on Algorand",
-    "decimals": 6,
-    "image": "https://turquoise-famous-mastodon-639.mypinata.cloud/ipfs/bafybeiea4hytr4rpzwidaoybdqniltt7jyei2gxdspn4uhhwzv7um2yxw4#arc3",
-    "properties": {
-        "type": "meme coin"
-    }
+  "name": "Moon Kitten",
+  "description": "MoonKitten is a decentralized meme token built around a cosmic feline identity, combining meme culture with Web3 utility branding. It focuses on community-driven growth, viral engagement, and lightweight ecosystem utility across decentralized networks.",
+  "image": "https://algorisex.github.io/algorand-token/ALGOX.png",
+  "image_mimetype": "image/png",
+  "external_url": "https://algorisex.online",
+  "properties": {
+    "website": "https://algorisex.online"
+  }
 }
