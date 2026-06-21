@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 Moon Kitten - Airdrop ALGO Rewards</title>
+    
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== CANVAS 3D ===== */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar .logo span {
+            color: #FF69B4;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .navbar .nav-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #FF69B4;
+        }
+
+        .navbar .nav-links a.active {
+            color: #FF69B4;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            text-align: center;
+            padding: 3rem 0 1rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-section .badge {
+            display: inline-block;
+            background: rgba(255, 105, 180, 0.15);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 50px;
+            padding: 0.4rem 1.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #FF69B4;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section .badge .algo-icon {
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .hero-section h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section h1 .highlight {
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4, #FF1493);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .hero-section h1 .algo-symbol {
+            -webkit-text-fill-color: initial;
+            color: #FFD700;
+        }
+
+        .hero-section p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* ===== BONUS SECTION (ATAS) ===== */
+        .bonus-section {
+            text-align: center;
+            margin: 0 0 2rem 0;
+            padding: 2rem 2.5rem;
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.15);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .bonus-section::before {
+            content: '';
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.05;
+            top: -1rem;
+            right: 1rem;
+            transform: rotate(15deg);
+        }
+
+        .bonus-section::after {
+            content: '🚀';
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.05;
+            bottom: -1rem;
+            left: 1rem;
+            transform: rotate(-15deg);
+        }
+
+        .bonus-section .bonus-label {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 50px;
+            padding: 0.2rem 1.2rem;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .bonus-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bonus-section h3 .gold-text {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bonus-section p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+            font-size: 1rem;
+        }
+
+        .bonus-section p strong {
+            color: #FFD700;
+        }
+
+        .bonus-section .bonus-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #FFD700;
+            margin: 0.5rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bonus-section .bonus-amount small {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .stats-bar .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.2rem 2.5rem;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .stats-bar .stat:hover {
+            border-color: rgba(255, 105, 180, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .stats-bar .stat .number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #FF69B4;
+            transition: all 0.3s ease;
+        }
+
+        .stats-bar .stat .number.gold {
+            color: #FFD700;
+        }
+
+        .stats-bar .stat .number.green {
+            color: #00ff88;
+        }
+
+        .stats-bar .stat .label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.3rem;
+            font-weight: 600;
+        }
+
+        .stats-bar .stat .live-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: scale(0.7);
+            }
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .section-title h2 .highlight {
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4, #FF1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .section-title p strong {
+            color: #FFD700;
+        }
+
+        /* ===== AIRDROP CARDS ===== */
+        .airdrop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .airdrop-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .airdrop-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 105, 180, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.1);
+        }
+
+        .airdrop-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .airdrop-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .airdrop-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .airdrop-card p strong {
+            color: #FFD700;
+        }
+
+        .airdrop-card .reward-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin: 0.5rem 0;
+        }
+
+        .airdrop-card .reward-amount small {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .airdrop-card .status {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0.5rem 0;
+        }
+
+        .status.live {
+            background: rgba(255, 105, 180, 0.15);
+            color: #FF69B4;
+            border: 1px solid rgba(255, 105, 180, 0.2);
+        }
+
+        .status.soon {
+            background: rgba(255, 215, 0, 0.15);
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* ===== BUTTON ===== */
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: #fff;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            border-color: #FF69B4;
+            color: #FF69B4;
+            transform: translateY(-3px);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a0a0a;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            color: #0a0a0a;
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.5);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ===== STAKING SECTION ===== */
+        .staking-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .staking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .staking-pool {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .staking-pool .pool-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .staking-pool .pool-apy {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin: 0.5rem 0;
+        }
+
+        .staking-pool .pool-details {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ===== LEADERBOARD ===== */
+        .leaderboard {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard-item:hover {
+            background: rgba(255, 105, 180, 0.05);
+        }
+
+        .leaderboard-item:last-child {
+            border-bottom: none;
+        }
+
+        .leaderboard-item .rank {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.3);
+            width: 40px;
+        }
+
+        .leaderboard-item .rank.gold {
+            color: #FFD700;
+        }
+
+        .leaderboard-item .rank.silver {
+            color: #C0C0C0;
+        }
+
+        .leaderboard-item .rank.bronze {
+            color: #CD7F32;
+        }
+
+        .leaderboard-item .user {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .leaderboard-item .user .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .leaderboard-item .user .name {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .leaderboard-item .user .address {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .leaderboard-item .user .address:hover {
+            color: #FF69B4;
+        }
+
+        .leaderboard-item .points {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #FFD700;
+            font-size: 0.9rem;
+        }
+
+        /* ===== ALGORAND BADGE ===== */
+        .algo-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 50px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.6rem;
+            color: #FFD700;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 0.5rem;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-container {
+            margin: 2rem 0;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFB6C1, #FF69B4, #FF1493);
+            border-radius: 10px;
+            transition: width 1.5s ease;
+            width: 0%;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 105, 180, 0.2);
+            border-radius: 16px;
+            padding: 1rem 2rem;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ===== ALGO FLOATING ===== */
+        .algo-float {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatAlgo linear infinite;
+        }
+
+        @keyframes floatAlgo {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.03;
+            }
+            90% {
+                opacity: 0.03;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+            .navbar .nav-links {
+                gap: 1rem;
+            }
+            .navbar .nav-links a {
+                font-size: 0.7rem;
+            }
+            .main-content {
+                padding: 5rem 1rem 2rem;
+            }
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .hero-section p {
+                font-size: 1rem;
+            }
+            .bonus-section {
+                padding: 1.5rem;
+                margin: 0 0 1.5rem;
+            }
+            .bonus-section h3 {
+                font-size: 1.3rem;
+            }
+            .bonus-section .bonus-amount {
+                font-size: 2rem;
+            }
+            .stats-bar {
+                gap: 1rem;
+            }
+            .stats-bar .stat {
+                padding: 1rem 1.5rem;
+                min-width: 100px;
+            }
+            .stats-bar .stat .number {
+                font-size: 2rem;
+            }
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            .airdrop-grid {
+                grid-template-columns: 1fr;
+            }
+            .staking-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .leaderboard-item {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .leaderboard-item .user .address {
+                font-size: 0.65rem;
+            }
+            .leaderboard-item .points {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .logo {
+                font-size: 0.9rem;
+            }
+            .navbar .nav-links {
+                gap: 0.8rem;
+            }
+            .navbar .nav-links a {
+                font-size: 0.6rem;
+            }
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+            .bonus-section h3 {
+                font-size: 1.1rem;
+            }
+            .bonus-section .bonus-amount {
+                font-size: 1.5rem;
+            }
+            .stats-bar .stat {
+                padding: 0.8rem 1rem;
+                min-width: 80px;
+            }
+            .stats-bar .stat .number {
+                font-size: 1.5rem;
+            }
+            .stats-bar .stat .label {
+                font-size: 0.6rem;
+            }
+            .staking-grid {
+                grid-template-columns: 1fr;
+            }
+            .airdrop-card .reward-amount {
+                font-size: 1.5rem;
+            }
+            .leaderboard-item .user .address {
+                font-size: 0.55rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 3D CANVAS ===== -->
+    <div id="canvas-container"></div>
+
+    <!-- ===== FLOATING ALGO ===== -->
+    <div id="floatingAlgo"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <a href="#" class="logo">🌙 MOON<span>KITTEN</span></a>
+        <ul class="nav-links">
+            <li><a href="#airdrop" class="active">🎁 Airdrop</a></li>
+            <li><a href="#staking" onclick="showToast('🔒 Staking coming soon!')">🔒 Staking</a></li>
+            <li><a href="#leaderboard">🏆 Leaderboard</a></li>
+            <li><a href="index.html">🏠 Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="main-content">
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero-section" id="airdrop">
+            <h1>🎁 <span class="highlight"><span class="algo-symbol"></span> ALGO</span> Airdrop</h1>
+            <p>
+                Claim free <strong style="color: #FFD700;">1,000 ALGO</strong> tokens, complete tasks, and earn rewards!
+                The biggest ALGO airdrop in meme coin history is here.
+            </p>
+        </section>
+
+        <!-- ===== BONUS AIRDROP SECTION (ATAS) ===== -->
+        <div class="bonus-section" id="bonus">
+            <div class="bonus-label">🎯 Special Bonus</div>
+            <h3>🎁 <span class="gold-text">Bonus Airdrop</span></h3>
+            <div class="bonus-amount">1,000 <small>ALGO</small></div>
+            <p>
+                Get an extra <strong>1,000 ALGO</strong> bonus instantly!
+            </p>
+            <a href="https://moonkitten.xyz/kitten.jpg" 
+               target="_blank" 
+               class="btn btn-gold pulse" 
+               onclick="claimBonus(event)">
+                🎉 Claim Airdrop
+            </a>
+        </div>
+
+        <!-- ===== STATS BAR - OTOMATIS ===== -->
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="number" id="totalClaimed">0</div>
+                <div class="label"><span class="live-dot"></span>Total Claimed</div>
+            </div>
+            <div class="stat">
+                <div class="number gold" id="totalRewards">0</div>
+                <div class="label"><span class="live-dot"></span>Total Rewards (ALGO)</div>
+            </div>
+            <div class="stat">
+                <div class="number green" id="activeUsers">0</div>
+                <div class="label"><span class="live-dot"></span>Active Users</div>
+            </div>
+        </div>
+
+        <!-- ===== PROGRESS BAR ===== -->
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>🎯 Airdrop Progress</span>
+                <span id="progressText">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- ===== AIRDROP CARDS ===== -->
+        <div class="section-title">
+            <h2>🚀 <span class="highlight">Airdrop</span> Tasks</h2>
+            <p>Complete tasks to earn <strong style="color: #FFD700;">ALGO</strong> rewards</p>
+        </div>
+
+        <div class="airdrop-grid">
+            <!-- Card 1: Follow Twitter -->
+            <div class="airdrop-card">
+                <div class="icon">🐦</div>
+                <h3>Follow Twitter</h3>
+                <p>Follow <strong>@MoonKitten</strong> on Twitter and retweet pinned post</p>
+                <div class="reward-amount"> 1,000 <small>ALGO</small></div>
+                <span class="status live">● Live</span>
+                <br><br>
+                <a href="https://x.com/Moon_MKIT" 
+                   target="_blank" 
+                   class="btn btn-primary"
+                   onclick="claimReward('Follow Twitter', 5, this)">
+                    <i class="fab fa-twitter"></i> Follow & Claim
+                </a>
+            </div>
+
+            <!-- Card 2: Join Telegram -->
+            <div class="airdrop-card">
+                <div class="icon">💬</div>
+                <h3>Join Telegram</h3>
+                <p>Join our Telegram community and say hello 👋</p>
+                <div class="reward-amount">1,000 <small>ALGO</small></div>
+                <span class="status live">● Live</span>
+                <br><br>
+                <a href="https://t.me/MoonKitten" 
+                   target="_blank" 
+                   class="btn btn-primary"
+                   onclick="claimReward('Join Telegram', 3, this)">
+                    <i class="fab fa-telegram"></i> Join & Claim
+                </a>
+            </div>
+
+            <!-- Card 3: Referral Bonus -->
+            <div class="airdrop-card">
+                <div class="icon">⭐</div>
+                <h3>Referral Bonus</h3>
+                <p>Refer a friend and earn <strong>1 ALGO</strong> each referral</p>
+                <div class="reward-amount">1,000 <small>ALGO</small></div>
+                <span class="status live">● Live</span>
+                <br><br>
+                <a href="https://moonkitten.xyz/kitten.jpg" 
+                   target="_blank" 
+                   class="btn btn-gold"
+                   onclick="claimReward('Referral Bonus', 1, this)">
+                    <i class="fas fa-users"></i> Refer Now
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== STAKING SECTION ===== -->
+        <div class="section-title" id="staking">
+            <h2>🔒 <span class="highlight">Staking</span> Pools</h2>
+            <p>Stake your <strong style="color: #FFD700;">ALGO</strong> and earn passive rewards</p>
+        </div>
+
+        <div class="staking-section">
+            <div class="staking-grid">
+                <div class="staking-pool">
+                    <div class="pool-name">🌙 Basic Pool</div>
+                    <div class="pool-apy">15% APY</div>
+                    <div class="pool-details">Min: 100 ALGO</div>
+                    <div class="pool-details">Lock: 7 days</div>
+                    <br>
+                    <button class="btn btn-secondary" onclick="showToast('🔒 Stake feature coming soon!')" style="width:100%;">
+                        Coming Soon
+                    </button>
+                </div>
+
+                <div class="staking-pool">
+                    <div class="pool-name">⭐ Silver Pool</div>
+                    <div class="pool-apy">25% APY</div>
+                    <div class="pool-details">Min: 500 ALGO</div>
+                    <div class="pool-details">Lock: 14 days</div>
+                    <br>
+                    <button class="btn btn-secondary" onclick="showToast('🔒 Stake feature coming soon!')" style="width:100%;">
+                        Coming Soon
+                    </button>
+                </div>
+
+                <div class="staking-pool">
+                    <div class="pool-name">💎 Gold Pool</div>
+                    <div class="pool-apy">40% APY</div>
+                    <div class="pool-details">Min: 1,000 ALGO</div>
+                    <div class="pool-details">Lock: 30 days</div>
+                    <br>
+                    <button class="btn btn-secondary" onclick="showToast('🔒 Stake feature coming soon!')" style="width:100%;">
+                        Coming Soon
+                    </button>
+                </div>
+
+                <div class="staking-pool">
+                    <div class="pool-name">🚀 Diamond Pool</div>
+                    <div class="pool-apy">69% APY</div>
+                    <div class="pool-details">Min: 5,000 ALGO</div>
+                    <div class="pool-details">Lock: 60 days</div>
+                    <br>
+                    <button class="btn btn-secondary" onclick="showToast('🔒 Stake feature coming soon!')" style="width:100%;">
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== LEADERBOARD ===== -->
+        <div class="section-title" id="leaderboard">
+            <h2>🏆 <span class="highlight">Leaderboard</span></h2>
+            <p>Top 10 users with most <strong style="color: #FFD700;">ALGO</strong> earned <span class="algo-badge">ⓐ ALGORAND</span></p>
+        </div>
+
+        <div class="leaderboard" id="leaderboardList">
+            <!-- Leaderboard items akan diisi oleh JavaScript -->
+        </div>
+
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ===== THREE.JS ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script>
+        // ============================================================
+        // 0. FLOATING ALGO
+        // ============================================================
+        (function createFloatingAlgo() {
+            const container = document.getElementById('floatingAlgo');
+            const symbols = ['', 'ⓐ', 'ALGO', '★', '✦', '∞', '🚀', '💎'];
+            for (let i = 0; i < 30; i++) {
+                const el = document.createElement('div');
+                el.className = 'algo-float';
+                el.textContent = symbols[i % symbols.length];
+                el.style.left = Math.random() * 100 + '%';
+                el.style.fontSize = (1 + Math.random() * 2) + 'rem';
+                el.style.animationDuration = (15 + Math.random() * 25) + 's';
+                el.style.animationDelay = (Math.random() * 20) + 's';
+                container.appendChild(el);
+            }
+        })();
+
+        // ============================================================
+        // 1. TOAST NOTIFICATION
+        // ============================================================
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ============================================================
+        // 2. STATS OTOMATIS
+        // ============================================================
+        let totalClaimed = 0;
+        let totalRewards = 0;
+        let activeUsers = 0;
+        let claimedTasks = new Set();
+        const TOTAL_TASKS = 3;
+        let bonusClaimed = false;
+
+        // Elemen DOM
+        const claimedEl = document.getElementById('totalClaimed');
+        const rewardsEl = document.getElementById('totalRewards');
+        const usersEl = document.getElementById('activeUsers');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+
+        // ============================================================
+        // 3. UPDATE STATS OTOMATIS (LIVE COUNTER)
+        // ============================================================
+        function updateStats() {
+            // Format angka dengan ribuan
+            claimedEl.textContent = totalClaimed.toLocaleString();
+            rewardsEl.textContent = totalRewards.toLocaleString();
+            usersEl.textContent = activeUsers.toLocaleString();
+
+            // Update progress
+            const progress = Math.min((totalClaimed / 100) * 100, 100);
+            progressFill.style.width = progress + '%';
+            progressText.textContent = Math.floor(progress) + '%';
+        }
+
+        // ============================================================
+        // 4. AUTO INCREMENT (SIMULASI LIVE)
+        // ============================================================
+        function autoIncrement() {
+            // Active Users: +1-3 setiap 4-8 detik
+            const userIncrement = Math.floor(Math.random() * 3) + 1;
+            activeUsers += userIncrement;
+
+            // Total Claimed: mengikuti active users (1 claim per 2-3 user)
+            const claimIncrement = Math.floor(userIncrement / 2) + (Math.random() > 0.7 ? 1 : 0);
+            totalClaimed += claimIncrement;
+
+            // Total Rewards: 1-5 ALGO per claim
+            const rewardIncrement = claimIncrement * (Math.floor(Math.random() * 4) + 1);
+            totalRewards += rewardIncrement;
+
+            updateStats();
+
+            // Toast notifikasi random (10% chance)
+            if (Math.random() < 0.1) {
+                const messages = [
+                    ' New ALGO claimed!',
+                    '🐱 New user joined!',
+                    '🚀 Airdrop is booming!',
+                    '💎 Another ALGO reward sent!',
+                    '🌟 Moon Kitten is trending!'
+                ];
+                showToast(messages[Math.floor(Math.random() * messages.length)]);
+            }
+        }
+
+        // Jalankan auto increment setiap 3-7 detik (random)
+        function scheduleAutoIncrement() {
+            const delay = Math.floor(Math.random() * 4000) + 3000; // 3-7 detik
+            setTimeout(() => {
+                autoIncrement();
+                scheduleAutoIncrement();
+            }, delay);
+        }
+
+        // ============================================================
+        // 5. CLAIM REWARD (MANUAL)
+        // ============================================================
+        function claimReward(taskName, amount, element) {
+            if (claimedTasks.has(taskName)) {
+                showToast('⚠️ You already claimed ' + taskName + '!');
+                return;
+            }
+
+            // Tambahkan ke stats
+            totalClaimed += 1;
+            totalRewards += amount;
+            activeUsers += Math.floor(Math.random() * 2) + 1;
+            claimedTasks.add(taskName);
+
+            updateStats();
+
+            showToast('✅ ' + taskName + ' claimed! +' + amount + ' ALGO sent to your Algorand wallet! ');
+
+            // Ubah tampilan tombol
+            element.innerHTML = '✅ Claimed ' + amount + ' ALGO';
+            element.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
+            element.style.color = '#0a0a0a';
+            element.style.boxShadow = '0 10px 40px rgba(0, 255, 136, 0.3)';
+            element.style.cursor = 'not-allowed';
+            element.onclick = function(e) {
+                e.preventDefault();
+                showToast('⚠️ You already claimed ' + taskName + '!');
+            };
+        }
+
+        // ============================================================
+        // 6. BONUS AIRDROP CLAIM (10 ALGO) - TANPA SYARAT
+        // ============================================================
+        function claimBonus(event) {
+            if (bonusClaimed) {
+                showToast('⚠️ You already claimed the bonus!');
+                event.preventDefault();
+                return;
+            }
+            
+            // ===== SYARAT COMPLETE ALL TASKS DIHAPUS =====
+            // Langsung claim bonus tanpa cek task
+            
+            bonusClaimed = true;
+            
+            totalClaimed += 1;
+            totalRewards += 10;
+            activeUsers += Math.floor(Math.random() * 3) + 1;
+            
+            updateStats();
+            
+            showToast('🎉 Bonus claimed! +10 ALGO sent to your Algorand wallet! ');
+
+            const btn = event.target;
+            btn.innerHTML = '✅ 10 ALGO Bonus Claimed!';
+            btn.className = 'btn btn-success pulse';
+            btn.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
+            btn.style.boxShadow = '0 10px 40px rgba(0, 255, 136, 0.3)';
+            btn.classList.remove('pulse');
+        }
+
+        // ============================================================
+        // 7. LEADERBOARD - ALGORAND ADDRESSES
+        // ============================================================
+
+        function generateAlgorandAddress() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let address = '';
+            for (let i = 0; i < 58; i++) {
+                address += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return address;
+        }
+
+        const users = [
+            { name: 'MoonWhale', points: 1250 },
+            { name: 'CryptoCat', points: 980 },
+            { name: 'KittenKing', points: 870 },
+            { name: 'StarGazer', points: 760 },
+            { name: 'LunarQueen', points: 650 },
+            { name: 'PawMaster', points: 540 },
+            { name: 'WhiskerLabs', points: 430 },
+            { name: 'MoonRider', points: 320 },
+            { name: 'CatNinja', points: 210 },
+            { name: 'FelineKing', points: 100 },
+        ];
+
+        users.forEach(user => {
+            user.address = generateAlgorandAddress();
+        });
+
+        function renderLeaderboard() {
+            const container = document.getElementById('leaderboardList');
+            let html = '';
+
+            users.forEach((user, index) => {
+                const rank = index + 1;
+                let rankClass = 'rank';
+                if (rank === 1) rankClass += ' gold';
+                else if (rank === 2) rankClass += ' silver';
+                else if (rank === 3) rankClass += ' bronze';
+
+                const avatarColors = ['#FF69B4', '#FF1493', '#FFB6C1', '#FFD700', '#FFA500', '#FF69B4', '#FF1493', '#FFB6C1', '#FFD700', '#FFA500'];
+
+                const shortAddress = user.address.slice(0, 8) + '...' + user.address.slice(-4);
+
+                html += `
+                    <div class="leaderboard-item">
+                        <div class="${rankClass}">#${rank}</div>
+                        <div class="user">
+                            <div class="avatar" style="background: ${avatarColors[index]}">${user.name.charAt(0)}</div>
+                            <div>
+                                <div class="name">${user.name}</div>
+                                <div class="address" title="📋 Click to copy Algorand address" 
+                                     onclick="copyAddress('${user.address}')">
+                                    ⓐ ${shortAddress}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="points"> ${user.points} ALGO</div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ============================================================
+        // 8. COPY ADDRESS FUNCTION
+        // ============================================================
+        function copyAddress(address) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(address).then(() => {
+                    showToast('📋 Algorand address copied to clipboard!');
+                }).catch(() => {
+                    copyFallback(address);
+                });
+            } else {
+                copyFallback(address);
+            }
+        }
+
+        function copyFallback(address) {
+            const textarea = document.createElement('textarea');
+            textarea.value = address;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast('📋 Algorand address copied to clipboard!');
+        }
+
+        renderLeaderboard();
+
+        // ============================================================
+        // 9. START AUTO INCREMENT
+        // ============================================================
+        // Mulai dengan angka awal
+        totalClaimed = 42;
+        totalRewards = 156;
+        activeUsers = 89;
+        updateStats();
+
+        // Mulai auto increment
+        scheduleAutoIncrement();
+
+        // ============================================================
+        // 10. THREE.JS 3D SCENE
+        // ============================================================
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0a0a);
+
+        const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0.5, 7);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // Lights
+        const ambient = new THREE.AmbientLight(0x404040, 0.4);
+        scene.add(ambient);
+
+        const main = new THREE.DirectionalLight(0xffaaff, 1.5);
+        main.position.set(5, 10, 7);
+        scene.add(main);
+
+        const fill = new THREE.DirectionalLight(0x8888ff, 0.3);
+        fill.position.set(-5, 0, 5);
+        scene.add(fill);
+
+        const rim = new THREE.DirectionalLight(0xff69b4, 0.6);
+        rim.position.set(-3, -2, -5);
+        scene.add(rim);
+
+        // Moon
+        function createMoon() {
+            const group = new THREE.Group();
+            const moonGeo = new THREE.SphereGeometry(1.6, 64, 64);
+            const moonMat = new THREE.MeshPhysicalMaterial({
+                color: 0xFFB6C1,
+                emissive: 0xFF69B4,
+                emissiveIntensity: 0.15,
+                roughness: 0.3,
+                metalness: 0.1,
+                clearcoat: 0.2,
+            });
+            const moon = new THREE.Mesh(moonGeo, moonMat);
+            group.add(moon);
+
+            const cutGeo = new THREE.SphereGeometry(1.25, 64, 64);
+            const cutMat = new THREE.MeshPhysicalMaterial({
+                color: 0x0a0a0a,
+                roughness: 1,
+                metalness: 0,
+            });
+            const cut = new THREE.Mesh(cutGeo, cutMat);
+            cut.position.x = 0.55;
+            cut.position.y = 0.15;
+            group.add(cut);
+
+            const glowGeo = new THREE.SphereGeometry(1.8, 32, 32);
+            const glowMat = new THREE.MeshBasicMaterial({
+                color: 0xFF69B4,
+                transparent: true,
+                opacity: 0.05,
+                side: THREE.BackSide,
+            });
+            const glow = new THREE.Mesh(glowGeo, glowMat);
+            group.add(glow);
+
+            return group;
+        }
+
+        const moonGroup = createMoon();
+        moonGroup.position.y = 1.5;
+        scene.add(moonGroup);
+
+        // Cat
+        function createCat() {
+            const group = new THREE.Group();
+            const blackMat = new THREE.MeshPhysicalMaterial({
+                color: 0x111111,
+                roughness: 0.5,
+                metalness: 0.2,
+            });
+
+            const body = new THREE.Mesh(new THREE.SphereGeometry(0.7, 32, 32), blackMat);
+            body.scale.set(1, 0.9, 0.7);
+            body.position.y = -0.4;
+            group.add(body);
+
+            const head = new THREE.Mesh(new THREE.SphereGeometry(0.65, 32, 32), blackMat);
+            head.position.set(0, 0.35, 0.1);
+            group.add(head);
+
+            const earGeo = new THREE.ConeGeometry(0.22, 0.32, 8);
+            const earL = new THREE.Mesh(earGeo, blackMat);
+            earL.position.set(-0.38, 0.85, 0);
+            earL.rotation.z = -0.3;
+            group.add(earL);
+
+            const earR = new THREE.Mesh(earGeo, blackMat);
+            earR.position.set(0.38, 0.85, 0);
+            earR.rotation.z = 0.3;
+            group.add(earR);
+
+            const whiteMat = new THREE.MeshPhysicalMaterial({
+                color: 0xffffff,
+                roughness: 0.1,
+                metalness: 0.1,
+            });
+            const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.14, 16, 16), whiteMat);
+            eyeL.position.set(-0.18, 0.4, 0.6);
+            group.add(eyeL);
+
+            const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.14, 16, 16), whiteMat);
+            eyeR.position.set(0.18, 0.4, 0.6);
+            group.add(eyeR);
+
+            const pupilMat = new THREE.MeshPhysicalMaterial({
+                color: 0x000000,
+                roughness: 0.1,
+                metalness: 0.9,
+            });
+            const pupilL = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 16), pupilMat);
+            pupilL.position.set(-0.18, 0.38, 0.72);
+            group.add(pupilL);
+
+            const pupilR = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 16), pupilMat);
+            pupilR.position.set(0.18, 0.38, 0.72);
+            group.add(pupilR);
+
+            const pinkMat = new THREE.MeshPhysicalMaterial({
+                color: 0xFF1493,
+                roughness: 0.3,
+                metalness: 0.1,
+                emissive: 0xFF1493,
+                emissiveIntensity: 0.1,
+            });
+            const nose = new THREE.Mesh(new THREE.ConeGeometry(0.055, 0.07, 4), pinkMat);
+            nose.position.set(0, 0.3, 0.7);
+            nose.rotation.x = 0.2;
+            group.add(nose);
+
+            const tailMat = new THREE.MeshPhysicalMaterial({
+                color: 0xFF69B4,
+                roughness: 0.2,
+                metalness: 0.2,
+                emissive: 0xFF69B4,
+                emissiveIntensity: 0.15,
+            });
+            for (let i = 0; i < 8; i++) {
+                const seg = new THREE.Mesh(new THREE.SphereGeometry(0.07 - i * 0.005, 8, 8), tailMat);
+                const t = i / 8;
+                const angle = t * Math.PI * 1.5;
+                seg.position.set(
+                    0.4 + Math.sin(angle) * 0.3,
+                    -0.35 + Math.cos(angle) * 0.2 - t * 0.15,
+                    0.1 + Math.cos(angle) * 0.1
+                );
+                group.add(seg);
+            }
+
+            return group;
+        }
+
+        const catGroup = createCat();
+        catGroup.position.set(0, 1.5, 0);
+        catGroup.scale.set(0.8, 0.8, 0.8);
+        scene.add(catGroup);
+
+        // Particles
+        function createParticles() {
+            const count = 800;
+            const geo = new THREE.BufferGeometry();
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
+
+            for (let i = 0; i < count; i++) {
+                const radius = 4 + Math.random() * 10;
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos((Math.random() * 2) - 1);
+
+                positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+                positions[i * 3 + 1] = radius * Math.cos(phi) * 0.5;
+                positions[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+
+                const color = new THREE.Color().setHSL(
+                    0.88 + Math.random() * 0.12,
+                    0.6 + Math.random() * 0.4,
+                    0.5 + Math.random() * 0.5
+                );
+                colors[i * 3] = color.r;
+                colors[i * 3 + 1] = color.g;
+                colors[i * 3 + 2] = color.b;
+            }
+
+            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const mat = new THREE.PointsMaterial({
+                size: 0.04,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending,
+                sizeAttenuation: true,
+            });
+
+            return new THREE.Points(geo, mat);
+        }
+
+        const particles = createParticles();
+        scene.add(particles);
+
+        // Animation
+        let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+        let time = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            if (touch) {
+                mouseX = (touch.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(touch.clientY / window.innerHeight) * 2 + 1;
+            }
+        }, { passive: true });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.005;
+
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+
+            const rotX = targetY * 0.2;
+            const rotY = targetX * 0.3;
+
+            moonGroup.rotation.x = rotX;
+            moonGroup.rotation.y = rotY;
+            catGroup.rotation.x = rotX;
+            catGroup.rotation.y = rotY;
+
+            const bob = Math.sin(time * 0.6) * 0.04;
+            catGroup.position.y = 1.5 + bob;
+            moonGroup.position.y = 1.5 + bob;
+
+            particles.rotation.y += 0.0003;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Resize
+        window.addEventListener('resize', () => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        });
+
+        console.log('🚀 Moon Kitten Airdrop Stats Auto-Running!');
+        console.log('📊 Total Claimed: ' + totalClaimed);
+        console.log(' Total Rewards: ' + totalRewards + ' ALGO');
+        console.log('👥 Active Users: ' + activeUsers);
+    </script>
+</body>
+</html>
