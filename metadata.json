@@ -1,22 +1,9 @@
 {
   "name": "Moon Kitten",
   "symbol": "MKIT",
-  "description": "MoonKitten is a decentralized meme token built around a cosmic feline identity, combining meme culture utility branding. It focuses on community-driven growth, viral engagement, and lightweight ecosystem utility across decentralized networks.",
-  "image": "https://moonkitten.xyz/kitten.png",
   "decimals": 6,
-  "total_supply": "10000000000000",
-  "asset_id": "3611495731",
-  "standard": "ASA",
+  "type": "Fungible Token",
   "category": "Meme Coin",
-  "creator": "Moon Kitten Community",
-  "website": "https://moonkitten.xyz",
-  "external_url": "https://moonkitten.xyz",
-  "properties": {
-    "network": "Algorand MainNet",
-    "website": "https://moonkitten.xyz",
-    "external_url": "https://moonkitten.xyz",
-    "community_driven": true,
-    "ticker": "MKIT",
-    "blockchain": "Algorand"
-  }
+  "description": "LORA is a community-driven meme coin on Algorand.",
+  "website": "https://moonkitten.xyz"
 }
