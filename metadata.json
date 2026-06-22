@@ -1,10 +1,13 @@
 {
   "name": "Moon Kitten",
-  "symbol": "MKIT",
-  "decimals": 6,
-  "type": "Fungible Token",
-  "category": "Meme Coin",
+  "unitName": "MKT",
+  "description": "Moon Kitten is a community-driven meme token on Algorand.",
   "image": "https://moonkitten.xyz/kitten.png",
-  "description": "LORA is a community-driven meme coin on Algorand.",
-  "website": "https://moonkitten.xyz"
+  "image_integrity": "sha256-xxxxxxxxxxxxxxxxxxxxxxxx",
+  "image_mimetype": "image/png",
+  "properties": {
+    "website": "https://moonkitten.xyz",
+    "twitter": "https://x.com/Moon_MKIT",
+    "telegram": "https://t.me/+LJRsreSH1TlmNmJl"
+  }
 }
