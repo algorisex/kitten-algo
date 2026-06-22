@@ -4,6 +4,7 @@
   "decimals": 6,
   "type": "Fungible Token",
   "category": "Meme Coin",
+  "image": "https://moonkitten.xyz/kitten.png",
   "description": "LORA is a community-driven meme coin on Algorand.",
   "website": "https://moonkitten.xyz"
 }
