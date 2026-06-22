@@ -13,7 +13,8 @@
   "external_url": "https://moonkitten.xyz",
   "properties": {
     "network": "Algorand MainNet",
-    "type": "Meme Coin",
+    "website": "https://moonkitten.xyz",
+    "external_url": "https://moonkitten.xyz",
     "community_driven": true,
     "ticker": "MKIT",
     "blockchain": "Algorand"
