@@ -1,19 +1,21 @@
 {
-  "name": "Moon kitten",
+  "name": "Moon Kitten",
   "symbol": "MKIT",
   "description": "MoonKitten is a decentralized meme token built around a cosmic feline identity, combining meme culture with Web3 utility branding. It focuses on community-driven growth, viral engagement, and lightweight ecosystem utility across decentralized networks.",
-  "decimals": 6,
-  "total_supply": "1000000000000",
-  "creator": "Moon Kitten",
-  "website": "https://moonkitten.xyz",
-  "explorer": "https://allo.info/asset/3610948370",
   "image": "https://moonkitten.xyz/kitten.png",
+  "decimals": 6,
+  "total_supply": "10000000000000",
+  "asset_id": "3611479281",
+  "standard": "ASA",
+  "category": "Meme Coin",
+  "creator": "Moon Kitten Community",
+  "website": "https://moonkitten.xyz",
   "external_url": "https://moonkitten.xyz",
   "properties": {
-    "blockchain": "Algorand",
-    "standard": "ARC-200",
-    "asset_name": "Moon kitten",
-    "asset_id": "3610948370",
-    "type": "Utility Token"
+    "network": "Algorand MainNet",
+    "type": "Meme Coin",
+    "community_driven": true,
+    "ticker": "MKIT",
+    "blockchain": "Algorand"
   }
 }
