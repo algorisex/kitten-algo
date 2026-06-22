@@ -1,13 +1,15 @@
 {
-  "name": "Moon Kitten",
-  "unitName": "MKT",
-  "description": "Moon Kitten is a community-driven meme token on Algorand.",
-  "image": "https://moonkitten.xyz/kitten.png",
-  "image_integrity": "sha256-xxxxxxxxxxxxxxxxxxxxxxxx",
-  "image_mimetype": "image/png",
+  "name": "Moon kitten",
+  "symbol": "MKIT",
+  "description": "MoonKitten is a decentralized meme token built around a cosmic feline identity, combining meme culture with Web3 utility branding. It focuses on community-driven growth, viral engagement, and lightweight ecosystem utility across decentralized networks.",
+  "decimals": 6,
+  "total_supply": "1000000000000000",
+  "creator": "Moon Kitten Team",
+  "website": "https://moonkitten.xyz"
+  "image": "https://turquoise-famous-mastodon-639.mypinata.cloud/ipfs/bafybeidbib54w3psgf6prg37niq7vhkgwceyij5huuiqv4rdiexpi3imx4",
+  "external_url": "https://moonkitten.xyz",
   "properties": {
-    "website": "https://moonkitten.xyz",
-    "twitter": "https://x.com/Moon_MKIT",
-    "telegram": "https://t.me/+LJRsreSH1TlmNmJl"
+    "blockchain": "Algorand",
+    "standard": "ARC-200",
   }
 }
